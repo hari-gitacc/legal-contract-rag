@@ -1,0 +1,25 @@
+[project]
+name = "legal-rag-backend"
+version = "0.1.0"
+description = "Stateful Legal RAG System with Pinecone Cloud, Local Hybrid Search, and FlashRank"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "flashrank>=0.2.8",
+    "langchain-community>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-google-genai>=2.0.0",
+    "langchain-openai>=0.1.0",
+    "langgraph>=0.2.20",
+    "pinecone>=5.0.0",
+    "pinecone-text>=0.5.0",
+    "pydantic>=2.8.0",
+    "pydantic-settings>=2.4.0",
+    "pypdf>=4.3.0",
+    "python-docx>=1.1.2",
+    "python-dotenv>=1.0.1",
+    "python-multipart>=0.0.9",
+    "sentence-transformers>=3.0.0",
+    "uvicorn>=0.30.0",
+]

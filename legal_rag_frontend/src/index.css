@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════
+   LEGAL CONTRACT AI — Design System
+   Premium dark-mode theme with glassmorphism & animations
+   ═══════════════════════════════════════════════════════ */
+
+@theme {
+  /* Background layers */
+  --color-bg-primary: #0a0f1e;
+  --color-bg-secondary: #0f172a;
+  --color-bg-elevated: #1a2342;
+  --color-bg-card: #151d35;
+  --color-bg-hover: #1e2a4a;
+
+  /* Accent palette */
+  --color-accent-blue: #3b82f6;
+  --color-accent-blue-light: #60a5fa;
+  --color-accent-indigo: #6366f1;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-emerald: #34d399;
+
+  /* Warning / Conflict */
+  --color-warn-bg: #2a1a0e;
+  --color-warn-border: #b45309;
+  --color-warn-text: #fbbf24;
+
+  /* Success */
+  --color-success-bg: #0a2e1a;
+  --color-success-border: #16a34a;
+  --color-success-text: #4ade80;
+
+  /* Text hierarchy */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-dim: #475569;
+
+  /* Borders */
+  --color-border-subtle: rgba(148, 163, 184, 0.08);
+  --color-border-light: rgba(148, 163, 184, 0.15);
+  --color-border-accent: rgba(59, 130, 246, 0.3);
+
+  /* Font */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ═══════════════════ Base Layer ═══════════════════ */
+/* @layer base sits BELOW utilities in the Tailwind cascade */
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.15);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.3);
+  }
+}
+
+/* ═══════════════════ Component Layer ═══════════════════ */
+
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .glass-light {
+    background: rgba(26, 35, 66, 0.5);
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  /* Loading dots */
+  .loading-dots span {
+    display: inline-block;
+    animation: pulse-glow 1.4s ease-in-out infinite;
+  }
+  .loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Gradient shimmer for status text */
+  .shimmer-text {
+    background: linear-gradient(90deg, var(--color-accent-blue) 0%, var(--color-accent-cyan) 50%, var(--color-accent-blue) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Upload Drop Zone */
+  .drop-zone {
+    border: 2px dashed var(--color-border-light);
+    transition: all 0.3s ease;
+  }
+  .drop-zone:hover,
+  .drop-zone.dragging {
+    border-color: var(--color-accent-blue);
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  /* Gradient Accents */
+  .gradient-blue {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.1), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* ═══════════════════ Animations ═══════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ═══════════════════ Animation Utilities ═══════════════════ */
+/* Placed in @utilities layer so they can coexist with Tailwind utilities */
+
+@utility animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+@utility animate-slide-left {
+  animation: slide-in-left 0.3s ease-out forwards;
+}
+
+@utility animate-slide-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@utility animate-blink {
+  animation: blink 1s step-end infinite;
+}

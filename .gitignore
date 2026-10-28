@@ -1,0 +1,38 @@
+# --- Python / backend ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+
+# Secrets & env
+.env
+.env.local
+.env.*.local
+
+# Backend storage (uploaded contracts, local BM25 params)
+legal_rag_backend/storage/contracts/
+legal_rag_backend/storage/bm25_params.json
+
+# --- Node / frontend ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# --- Editors / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Old nested git history backup (not part of this repo)
+legal_rag_backend/.git.bak/

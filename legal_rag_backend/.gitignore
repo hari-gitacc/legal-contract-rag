@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets & Config
+.env
+.env.local
+
+# IDEs & Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Project specific storage
+storage/contracts/
+storage/bm25_params.json
+/tmp/
